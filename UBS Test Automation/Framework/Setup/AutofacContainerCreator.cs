@@ -19,9 +19,14 @@ namespace UBS_Test_Automation.Framework.Setup
             ContainerBuilder containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterType<ChromeDriver>().As<IWebDriver>().SingleInstance();
 
+            containerBuilder.RegisterType<ConfigReader>().SingleInstance();
+
             var pages = typeof(AutofacContainerCreator).Assembly.GetTypes()
                 .Where(t => t == typeof(BasePage))
                 .ToArray();
+            containerBuilder
+                .RegisterTypes(pages)
+                .SingleInstance();
             
             var bindings = typeof(AutofacContainerCreator).Assembly.GetTypes()
                 .Where(t => Attribute.IsDefined(t, typeof(BindingAttribute)))
