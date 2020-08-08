@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SpecFlow.Autofac;
 using TechTalk.SpecFlow;
+using UBS_Test_Automation.Pages;
 
 namespace UBS_Test_Automation.Framework.Setup
 {
@@ -18,11 +19,15 @@ namespace UBS_Test_Automation.Framework.Setup
             ContainerBuilder containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterType<ChromeDriver>().As<IWebDriver>().SingleInstance();
 
-            //We're registering all test classes from assembly with [Binding] annotation
+            var pages = typeof(AutofacContainerCreator).Assembly.GetTypes()
+                .Where(t => t == typeof(BasePage))
+                .ToArray();
+            
+            var bindings = typeof(AutofacContainerCreator).Assembly.GetTypes()
+                .Where(t => Attribute.IsDefined(t, typeof(BindingAttribute)))
+                .ToArray();
             containerBuilder
-                .RegisterTypes(typeof(AutofacContainerCreator).Assembly.GetTypes()
-                    .Where(t => Attribute.IsDefined(t, typeof(BindingAttribute)))
-                    .ToArray())
+                .RegisterTypes(bindings)
                 .SingleInstance();
             return containerBuilder;
         }
