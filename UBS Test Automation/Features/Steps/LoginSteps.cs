@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TechTalk.SpecFlow;
 using UBS_Test_Automation.Framework.Setup;
+using UBS_Test_Automation.Pages;
 
 namespace UBS_Test_Automation.Features.Steps
 {
@@ -10,15 +11,17 @@ namespace UBS_Test_Automation.Features.Steps
     class LoginSteps
     {
         public Config Config { get; set; }
-        public LoginSteps(ConfigReader configReader)
+        public MainPage MainPage { get; set; }
+        public LoginSteps(ConfigReader configReader, MainPage mainPage)
         {
             Config = configReader.Config;
+            MainPage = mainPage;
         }
 
         [Given(@"I am on the main page")]
         public void GivenIAmOnTheMainPage()
         {
-            
+            System.Console.Out.WriteLine(MainPage.url);
         }
 
         [Given(@"I click on the login button")]

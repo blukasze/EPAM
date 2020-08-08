@@ -24,13 +24,13 @@ namespace UBS_Test_Automation.Features.Steps
         [When(@"I press the Get In Touch button")]
         public void WhenIPressTheGetInTouchButton()
         {
-            ScenarioContext.Current.Pending();
+  
         }
 
         [Then(@"I am presented with a contact form")]
         public void ThenIAmPresentedWithAContactForm()
         {
-            ScenarioContext.Current.Pending();
+      
         }
 
     }

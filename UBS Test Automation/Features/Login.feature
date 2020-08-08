@@ -3,7 +3,6 @@
 	As a UBS customer
 	I need to be able to login
 
-@Chrome
 Scenario: Failed login
 	Given I am on the main page
 	And I click on the login button
