@@ -11,11 +11,10 @@ namespace UBS_Test_Automation.Framework.Setup
         public IConfiguration Configuration { get; set; }
         public Config Config { get; }
 
-        public ConfigReader(/*IHostingEnvironment env*/)
+        public ConfigReader()
         {
             var builder = new ConfigurationBuilder()
-                //.SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
             Configuration = builder.Build();
             var configSection = Configuration.GetSection("Config");

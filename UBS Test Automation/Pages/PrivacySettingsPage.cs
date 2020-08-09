@@ -17,7 +17,7 @@ namespace UBS_Test_Automation.Pages
         private IWebElement AgreeToAllButton => Driver.FindElement(By.XPath("//span[text() = 'Agree to all']"), WaitForElementExists);
 
         private IWebElement PrivacySettingsIFrame =>
-            Driver.FindElement(By.CssSelector("iframe[src*='privacy-settings.cookieLightbox']"));
+            Driver.FindElement(By.CssSelector("iframe[src*='privacy-settings.cookieLightbox']"), WaitForElementExists);
        
 
         public void ClickAgreeToAllButton()

@@ -14,17 +14,10 @@ namespace UBS_Test_Automation.Framework.Setup
             {
                 Timeout = timeout
             };
-            //wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(ElementNotInteractableException));
+            wait.IgnoreExceptionTypes(typeof(ElementNotInteractableException));
             wait.Until(el =>
             {
-                try
-                {
-                    el.Click();
-                }
-                catch (ElementNotInteractableException ex)
-                {
-                    return false;
-                }
+                el.Click();
                 return true;
             });
         }
