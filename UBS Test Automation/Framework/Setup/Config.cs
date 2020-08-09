@@ -8,6 +8,7 @@ namespace UBS_Test_Automation.Framework.Setup
     public class Config
     {
         public Users Users { get; set; }
+        public Timeouts Timeouts { get; set; }
     }
 
     public class Users
@@ -26,6 +27,12 @@ namespace UBS_Test_Automation.Framework.Setup
     {
         public string username { get; set; }
         public string password { get; set; }
+    }
+
+    public class Timeouts
+    {
+        public TimeSpan WaitForElementExists { get; set; }
+        public TimeSpan WaitForElementToBeInteractable { get; set; }
     }
 
 }
